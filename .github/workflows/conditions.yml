@@ -23,6 +23,7 @@ jobs:
     run: npm ci
     
   - name: build-code
+    id: build-code
     run: npm run build
   - if: ${{ steps.build-code.outcome=='failure' }}
     run: echo "failure"
