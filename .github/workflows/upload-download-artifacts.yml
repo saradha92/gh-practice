@@ -14,13 +14,6 @@ jobs:
     run: npm ci
   - name: build-code
     run: npm run build
-  - name: creating files in my-artifacts
-    run: |
-     cd my-artifacts
-     echo 'alpha'    > alpha.html
-     echo 'bravo'    > bravo.html
-     echo 'charlie'  > charlie.html
-     cd ..
   - name: upload artifacts  
     uses: actions/upload-artifact@v3
     with: 
@@ -42,5 +35,11 @@ jobs:
     uses: actions/checkout@v3
   - name: Install dependencies
     run: npm ci
+  - name: get build artifacts
+    uses: actions/download-artifact@v3
+    with:
+     name: my-artifacts
+  - name: output-contents
+    run: ls
   - name: deploy
     run: echo "Deploying..."
