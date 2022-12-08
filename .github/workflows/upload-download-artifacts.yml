@@ -36,10 +36,6 @@ jobs:
     uses: actions/checkout@v3
   - name: Install dependencies
     run: npm ci
-  - name: download artifacts
-    uses: actions/download-artifact@v3
-    with:
-     name: my-artifacts
   - name: output-contents
     run: ls
   - name: deploy
