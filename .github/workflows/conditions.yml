@@ -24,8 +24,9 @@ jobs:
     
   - name: build-code
     id: build-code
+    continue-on-error: true
     run: npm run build
-  - if: ${{ failure() && steps.build-code.outcome == 'failure' }}
+  - if: ${{ always() && steps.build-code.outcome == 'failure' }}
     run: echo "failure"
  test:
   runs-on: ubuntu-latest
