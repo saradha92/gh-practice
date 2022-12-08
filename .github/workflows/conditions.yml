@@ -23,7 +23,9 @@ jobs:
     run: npm ci
     
   - name: build-code
+    continue-on-error: true 
     run: npm run build
+    
     
  test:
   runs-on: ubuntu-latest
