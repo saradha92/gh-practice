@@ -15,8 +15,8 @@ jobs:
     with:
      path: ~/.npm
      key: |
-      deps-node-modules-${{ hashFiles('package-lock.json') }}
-      deps-node-modules-${{ hashFiles('package.json') }}
+      npm-${{ hashFiles('package-lock.json') }}
+      npm-${{ hashFiles('package.json') }}
       
   - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
     name: List the state of node modules
