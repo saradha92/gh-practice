@@ -24,7 +24,7 @@ jobs:
     
   - name: build-code
     run: npm run build
-  - if: steps.build-code.outcome=='failure'
+  - if: ${{ steps.build-code.outcome=='failure' }}
     run: echo "failure"
  test:
   runs-on: ubuntu-latest
