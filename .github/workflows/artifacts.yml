@@ -1,4 +1,4 @@
-name: artifacts
+name: general
 on: 
  push:
   branches:
