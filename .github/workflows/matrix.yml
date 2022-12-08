@@ -4,11 +4,11 @@ on:
   branches:
    - master
 jobs: 
-  strategy:
-   matrix:
-    node-version: [12, 14, 16]
-    operating-system: [ubuntu-latest, windows-latest]
-  build:
+ build:
+   strategy:
+    matrix:
+     node-version: [12, 14, 16]
+     operating-system: [ubuntu-latest, windows-latest]
    runs-on: ${{ matrix.operating-system }}
    steps:
    - name: Get-Code
@@ -19,9 +19,13 @@ jobs:
      run: npm ci
    - name: build-code
      run: npm run build
-  test:
-   runs-on:  ${{ matrix.operating-system }}
-   steps:
+ test:
+  strategy:
+   matrix:
+    node-version: [12, 14, 16]
+    operating-system: [ubuntu-latest, windows-latest]
+  runs-on:  ${{ matrix.operating-system }}
+  steps:
    - name: Get-Code
      uses: actions/checkout@v3
      with: 
@@ -30,9 +34,13 @@ jobs:
      run: npm ci
    - name: test-code
      run: npm run test
-  deploy: 
-   runs-on:  ${{ matrix.operating-system }}
-   steps:
+ deploy: 
+  strategy:
+   matrix:
+    node-version: [12, 14, 16]
+    operating-system: [ubuntu-latest, windows-latest]
+  runs-on:  ${{ matrix.operating-system }}
+  steps:
    - name: Get-Code
      uses: actions/checkout@v3
      with: 
