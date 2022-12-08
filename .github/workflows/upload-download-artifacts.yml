@@ -24,7 +24,7 @@ jobs:
     uses: actions/upload-artifacts@v3
     with: 
      name: my-artifacts
-     path: saradha92/gh-practice/my-artifacts
+     path: test.yml
  test:
   runs-on: ubuntu-latest
   steps:
