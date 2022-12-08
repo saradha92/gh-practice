@@ -17,9 +17,8 @@ jobs:
      path: ~/.npm
      key: |
       npm-${{ hashFiles('package-lock.json') }}
-      npm-${{ hashFiles('package.json') }}
-      
-  - name: Install dependencies    
+      npm-${{ hashFiles('package.json') }}  
+     
   - if: ${{ steps.cache-dep.outputs.cache-hit != 'true' }}
     run: npm ci
     
