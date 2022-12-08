@@ -22,7 +22,7 @@ jobs:
      echo 'charlie'  > charlie.html
      cd ..
   - name: upload artifacts  
-    uses: actions/upload-artifacts@v1
+    uses: actions/upload-artifact@v3
     with: 
      name: my-artifacts
      path: test.yml
