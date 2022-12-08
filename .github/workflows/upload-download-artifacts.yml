@@ -14,7 +14,14 @@ jobs:
     run: npm ci
   - name: build-code
     run: npm run build
-  - name: upload-artifacts
+  - name: creating files in my-artifacts
+    run: |
+     cd my-artifacts
+     echo 'alpha'    > alpha.html
+     echo 'bravo'    > bravo.html
+     echo 'charlie'  > charlie.html
+     cd ..
+  - name: upload artifacts  
     uses: actions/upload-artifacts@v3
     with: 
      name: my-artifacts
