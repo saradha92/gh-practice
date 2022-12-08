@@ -4,40 +4,40 @@ on:
   branches:
    - master
 jobs: 
- build:
   strategy:
    matrix:
     node-version: [12, 14, 16]
     operating-system: [ubuntu-latest, windows-latest]
-  runs-on: ${{ matrix.operating-system }}
-  steps:
-  - name: Get-Code
-    uses: actions/checkout@v3
-    with: 
-     node-version: ${{ matrix.node-version }}
-  - name: Install dependencies
-    run: npm ci
-  - name: build-code
-    run: npm run build
- test:
-  runs-on:  ${{ matrix.operating-system }}
-  steps:
-  - name: Get-Code
-    uses: actions/checkout@v3
-    with: 
-     node-version: ${{ matrix.node-version }}  
-  - name: Install dependencies
-    run: npm ci
-  - name: test-code
-    run: npm run test
- deploy: 
-  runs-on:  ${{ matrix.operating-system }}
-  steps:
-  - name: Get-Code
-    uses: actions/checkout@v3
-    with: 
-     node-version: ${{ matrix.node-version }}
-  - name: Install dependencies
-    run: npm ci
-  - name: deploy
-    run: echo "Deploying..."
+  build:
+   runs-on: ${{ matrix.operating-system }}
+   steps:
+   - name: Get-Code
+     uses: actions/checkout@v3
+     with: 
+      node-version: ${{ matrix.node-version }}
+   - name: Install dependencies
+     run: npm ci
+   - name: build-code
+     run: npm run build
+  test:
+   runs-on:  ${{ matrix.operating-system }}
+   steps:
+   - name: Get-Code
+     uses: actions/checkout@v3
+     with: 
+      node-version: ${{ matrix.node-version }}  
+   - name: Install dependencies
+     run: npm ci
+   - name: test-code
+     run: npm run test
+  deploy: 
+   runs-on:  ${{ matrix.operating-system }}
+   steps:
+   - name: Get-Code
+     uses: actions/checkout@v3
+     with: 
+      node-version: ${{ matrix.node-version }}
+   - name: Install dependencies
+     run: npm ci
+   - name: deploy
+     run: echo "Deploying..."
