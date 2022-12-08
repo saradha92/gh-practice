@@ -25,11 +25,11 @@ jobs:
   - name: build-code
     id: build-code
     run: npm run build
-  - if: ${{ steps.build-code.outcome == 'failure' }}
+  - if: failure() && ${{ steps.build-code.outcome == 'failure' }}
     run: exit1
  test:
   runs-on: ubuntu-latest
-  steps:
+  steps: 
   - name: Get-Code
     uses: actions/checkout@v3
     
