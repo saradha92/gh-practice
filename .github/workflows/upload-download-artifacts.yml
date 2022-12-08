@@ -1,0 +1,41 @@
+
+name: artifacts-practice
+on: 
+ push:
+  branches:
+   - master
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Get-Code
+    uses: actions/checkout@v3
+  - name: Install dependencies
+    run: npm ci
+  - name: build-code
+    run: npm run build
+  - name: upload-artifacts
+    uses: actions/upload-artifacts@v3
+    with: 
+     name: my-artifacts
+     path: |
+      my-artifacts
+      package.json
+ test:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Get-Code
+    uses: actions/checkout@v3
+  - name: Install dependencies
+    run: npm ci
+  - name: test-code
+    run: npm run test
+ deploy: 
+  runs-on: ubuntu-latest
+  steps:
+  - name: Get-Code
+    uses: actions/checkout@v3
+  - name: Install dependencies
+    run: npm ci
+  - name: deploy
+    run: echo "Deploying..."
