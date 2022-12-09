@@ -4,9 +4,9 @@ on:
   branches: master
  workflow_call:
   inputs:
-   artifacts-name: 
+   my-artifacts: 
      required: false
-     default: '.'
+     default: my-artifacts
      type: string 
 jobs:
  deploy: 
