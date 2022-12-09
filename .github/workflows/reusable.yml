@@ -4,7 +4,7 @@ on:
   branches: master
  workflow_call:
   inputs:
-    artifacts-name: 
+   artifacts-name: 
      required: false
      default: 'my-artifacts'
      type: string 
