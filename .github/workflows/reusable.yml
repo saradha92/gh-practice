@@ -11,9 +11,13 @@ on:
 jobs:
  deploy: 
   runs-on: ubuntu-latest
-  name: ${{ inputs.artifacts-name }}
   
   steps:
+  
+  - name: Pass the received secret to an action
+    uses: ./.github/actions/my-action
+    with:
+       run: ${{ inputs.artifacts-name }}
   
   - name: Get-Code
     uses: actions/checkout@v3  
