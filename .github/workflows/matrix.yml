@@ -20,10 +20,7 @@ jobs:
    - name: build-code
      run: npm run build
  test:
-  strategy:
-   matrix:
-    node-version: [12, 14, 16]
-    operating-system: [ubuntu-latest, windows-latest]
+  needs: build
   runs-on:  ${{ matrix.operating-system }}
   steps:
    - name: Get-Code
@@ -35,10 +32,7 @@ jobs:
    - name: test-code
      run: npm run test
  deploy: 
-  strategy:
-   matrix:
-    node-version: [12, 14, 16]
-    operating-system: [ubuntu-latest, windows-latest]
+  needs: build
   runs-on:  ${{ matrix.operating-system }}
   steps:
    - name: Get-Code
