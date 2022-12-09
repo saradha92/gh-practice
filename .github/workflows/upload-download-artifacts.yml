@@ -34,6 +34,7 @@ jobs:
   uses: ./.github/workflows/reusable.yml
   with: 
    artifact-name: ${{ inputs.artifact-name }}
+   secret-name: ${{ secrets.secret-name }}
  
  report:
   needs: build
