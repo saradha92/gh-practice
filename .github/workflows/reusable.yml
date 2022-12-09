@@ -6,7 +6,7 @@ on:
   inputs:
    artifacts-name: 
      required: false
-     default: 'my-artifacts'
+     default: '.'
      type: string 
 jobs:
  deploy: 
