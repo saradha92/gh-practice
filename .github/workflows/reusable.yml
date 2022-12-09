@@ -15,7 +15,7 @@ jobs:
   steps:
   
   - name: Pass the received secret to an action
-    uses: ./.github/actions/my-action
+    uses: ./.github/workflows/upload-download-artifacts.yml
     with:
        run: ${{ inputs.artifact-name }}
   
