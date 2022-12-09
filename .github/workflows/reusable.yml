@@ -11,7 +11,15 @@ on:
 jobs:
  deploy: 
   runs-on: ubuntu-latest
+  name: ${{ inputs.artifacts-name }}
+  path: my-artifacts
+  
   steps:
+  
+  - uses: actions/labeler@v4
+    with:
+     name: ${{ inputs.artifacts-name }}
+     
   - name: Get-Code
     uses: actions/checkout@v3  
     
