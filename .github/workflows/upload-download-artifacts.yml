@@ -33,7 +33,7 @@ jobs:
   needs: build
   uses: ./.github/workflows/reusable.yml
   with: 
-   run: ${{ inputs.artifact-name }}
+   my-artifacts: ${{ inputs.artifact-name }}
  
  report:
   needs: build
