@@ -3,6 +3,11 @@ on:
  push:
   branches: master
  workflow_call:
+  inputs:
+    artifacts-name: 
+     required: false
+     default: dist
+     type: string 
 jobs:
  deploy: 
   runs-on: ubuntu-latest
