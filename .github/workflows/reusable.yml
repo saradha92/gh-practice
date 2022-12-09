@@ -14,6 +14,12 @@ jobs:
   steps:
   - name: Get-Code
     uses: actions/checkout@v3
+  - name: upload artifacts  
+    uses: actions/upload-artifact@v3
+    with: 
+     name: my-artifacts
+     path: my-artifacts  
+    
   - name: Install dependencies
     run: npm ci
   - name: deploy
