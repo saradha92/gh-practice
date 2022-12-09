@@ -1,9 +1,5 @@
 name: matrix-demo
-on: 
- push:
-  branches:
-   - master
-   
+on: push
 jobs: 
  build:
    strategy:
