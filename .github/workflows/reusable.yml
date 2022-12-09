@@ -17,7 +17,7 @@ jobs:
   - name: Pass the received secret to an action
     uses: ./.github/actions/my-action
     with:
-       run: ${{ inputs.artifacts-name }}
+       run: ${{ inputs.artifact-name }}
   
   - name: Get-Code
     uses: actions/checkout@v3  
