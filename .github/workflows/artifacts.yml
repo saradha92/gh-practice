@@ -1,0 +1,50 @@
+name: artifacts-practice
+on: 
+ push:
+  branches:
+   - master
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Get-Code
+    uses: actions/checkout@v3
+  - name: Install dependencies
+    run: npm ci
+  - name: build-code
+    run: npm run build
+  - name: upload artifacts  
+    uses: actions/upload-artifact@v3
+    with: 
+     name: my-artifacts
+     path: my-artifacts
+ test:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Get-Code
+    uses: actions/checkout@v3
+  - name: Install dependencies
+    run: npm ci
+  - name: test-code
+    run: npm run test
+    
+ deploy: 
+  needs: build
+  uses: ./.github/workflows/reusable.yml
+  with: 
+   artifact-name: ${{ inputs.artifact-name }}
+  secrets: 
+   accesstoken: ${{ secrets.ACCESSTOKEN }}
+ 
+ report:
+  needs: build
+  runs-on: ubuntu-latest
+  steps:
+ 
+   - name: download artifacts
+     uses: actions/download-artifact@v3
+     with:
+      name: my-artifacts     
+  
+   - name: output-contents
+     run: ls
