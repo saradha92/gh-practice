@@ -8,15 +8,20 @@ on:
      required: false
      default: 'my-artifacts'
      type: string
-  secrets: 
-   secret-name: 
-     required: false 
+  secrets:  
+    access-token:
+     description: 'A token passed from the caller workflow'
+     required: false
    
 jobs:
  deploy: 
   runs-on: ubuntu-latest
   
   steps:
+  - name: Pass the received secret to an action
+    uses: ./.github/actions/my-action
+    with:
+       token: ${{ secrets.access-token }}
        
   - name: Get-Code
     uses: actions/checkout@v3  
