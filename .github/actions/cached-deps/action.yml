@@ -2,12 +2,12 @@ name: 'custom-actions'
 description: 'Get the dependencies (via npm) & cache them'
 inputs: 
  caching:
- description: 'Whether to cache dependencies or not'
- required: true
- default: 'true'
+  description: 'Whether to cache dependencies or not'
+  required: true
+  default: 'true'
 outputs:
  used-cache:
- description: 'Whether the cache was used'
+  description: 'Whether the cache was used'
   value: ${{ steps.install.output.cache}} 
 runs: 
  using: "composite"
@@ -28,4 +28,5 @@ runs:
     run: echo "cache = ${{ inputs.caching }}" >> $GITHUB_OUTPUT
     shell: bash
   - name: output information
-    run: echo "cache used? ${{ step.cache.outputs.used-cache }}"   
+    run: echo "cache used? ${{ step.cache.outputs.used-cache }}"  
+    shell: bash 
