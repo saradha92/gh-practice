@@ -24,9 +24,10 @@ runs:
   - name: Install dependencies
     id: install
     if: ${{ steps.cache.output.cache-hit != 'true' || inputs.caching != true}} 
-    run: npm ci
-    run: echo "cache = ${{ inputs.caching }}" >> $GITHUB_OUTPUT
+    run: | 
+     npm ci
+     echo "cache = ${{ inputs.caching }}" >> $GITHUB_OUTPUT
     shell: bash
   - name: output information
-    run: echo "cache used? ${{ step.cache.outputs.used-cache }}"  
+    run: echo "cache used? ${{ steps.cache.outputs.used-cache }}"  
     shell: bash 
