@@ -1,0 +1,32 @@
+name: reusable-workflow
+on: 
+ push:
+  branches: master
+ workflow_call:
+  inputs:
+   artifact-name: 
+     required: false
+     default: 'my-artifacts'
+     type: string
+  secrets:  
+    accesstoken:
+     description: 'A token passed from the caller workflow'
+     required: false
+   
+jobs:
+ deploy: 
+  runs-on: ubuntu-latest
+  
+  steps:
+  - name: Pass the received secret to an action
+    uses: actions/checkout@v3  
+    with:
+       accesstoken: ${{ secrets.ACCESSTOKEN }}
+       
+  - name: Get-Code
+    uses: actions/checkout@v3  
+    
+  - name: Install dependencies
+    run: npm ci
+  - name: deploy
+    run: echo "Deploying..."

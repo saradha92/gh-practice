@@ -1,0 +1,17 @@
+name: 'custom-actions'
+description: 'Get the dependencies (via npm) & cache them'
+runs: 
+ using: "composite"
+ steps: 
+  - name: cache dependencies
+    uses: actions/cache@v3
+    with:
+     path: ~/.npm
+     key: |
+      deps-node-modules-${{ hashFiles('package-lock.json') }}
+      deps-node-modules-${{ hashFiles('package.json') }}
+  - name: Install dependencies
+    if: steps.cache.output.cache-hit != 'true' 
+    run: npm ci
+
+ 
