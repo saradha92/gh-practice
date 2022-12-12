@@ -35,7 +35,7 @@ jobs:
   with: 
    artifact-name: ${{ inputs.artifact-name }}
   secrets: 
-   token: ${{ secrets.accesstoken }}
+   accesstoken: ${{ secrets.accesstoken }}
  
  report:
   needs: build
