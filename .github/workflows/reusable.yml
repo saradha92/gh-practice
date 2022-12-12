@@ -19,7 +19,7 @@ jobs:
   
   steps:
   - name: Pass the received secret to an action
-    uses: ./.github/actions/my-action
+    uses: actions/checkout@v3  
     with:
        token: ${{ secrets.access-token }}
        
